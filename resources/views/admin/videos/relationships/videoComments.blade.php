@@ -34,6 +34,9 @@
                             {{ trans('cruds.comment.fields.status') }}
                         </th>
                         <th>
+                            {{ trans('cruds.comment.fields.user_email') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -55,6 +58,9 @@
                             </td>
                             <td>
                                 {{ App\Models\Comment::STATUS_SELECT[$comment->status] ?? '' }}
+                            </td>
+                            <td>
+                                {{ $comment->user_email ?? '' }}
                             </td>
                             <td>
                                 @can('comment_show')
