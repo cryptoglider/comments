@@ -6,6 +6,10 @@
             <a class="btn btn-success" href="{{ route('admin.comments.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.comment.title_singular') }}
             </a>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
+                {{ trans('global.app_csvImport') }}
+            </button>
+            @include('csvImport.modal', ['model' => 'Comment', 'route' => 'admin.comments.parseCsvImport'])
         </div>
     </div>
 @endcan
