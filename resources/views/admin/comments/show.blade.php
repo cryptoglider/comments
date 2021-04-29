@@ -47,6 +47,14 @@
                             {{ App\Models\Comment::STATUS_SELECT[$comment->status] ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.comment.fields.user_email') }}
+                        </th>
+                        <td>
+                            {{ $comment->user_email }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

@@ -50,6 +50,16 @@
                 <span class="help-block">{{ trans('cruds.comment.fields.status_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="user_email">{{ trans('cruds.comment.fields.user_email') }}</label>
+                <input class="form-control {{ $errors->has('user_email') ? 'is-invalid' : '' }}" type="email" name="user_email" id="user_email" value="{{ old('user_email', $comment->user_email) }}">
+                @if($errors->has('user_email'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('user_email') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.comment.fields.user_email_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

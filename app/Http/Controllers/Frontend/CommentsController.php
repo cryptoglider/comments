@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\CsvImportTrait;
@@ -23,7 +23,7 @@ class CommentsController extends Controller
 
         $comments = Comment::with(['video'])->get();
 
-        return view('admin.comments.index', compact('comments'));
+        return view('frontend.comments.index', compact('comments'));
     }
 
     public function create()
@@ -32,14 +32,14 @@ class CommentsController extends Controller
 
         $videos = Video::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.comments.create', compact('videos'));
+        return view('frontend.comments.create', compact('videos'));
     }
 
     public function store(StoreCommentRequest $request)
     {
         $comment = Comment::create($request->all());
 
-        return redirect()->route('admin.comments.index');
+        return redirect()->route('frontend.comments.index');
     }
 
     public function edit(Comment $comment)
@@ -50,14 +50,14 @@ class CommentsController extends Controller
 
         $comment->load('video');
 
-        return view('admin.comments.edit', compact('videos', 'comment'));
+        return view('frontend.comments.edit', compact('videos', 'comment'));
     }
 
     public function update(UpdateCommentRequest $request, Comment $comment)
     {
         $comment->update($request->all());
 
-        return redirect()->route('admin.comments.index');
+        return redirect()->route('frontend.comments.index');
     }
 
     public function show(Comment $comment)
@@ -66,7 +66,7 @@ class CommentsController extends Controller
 
         $comment->load('video');
 
-        return view('admin.comments.show', compact('comment'));
+        return view('frontend.comments.show', compact('comment'));
     }
 
     public function destroy(Comment $comment)

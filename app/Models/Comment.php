@@ -30,6 +30,7 @@ class Comment extends Model
         'text',
         'video_id',
         'status',
+        'user_email',
         'created_at',
         'updated_at',
         'deleted_at',

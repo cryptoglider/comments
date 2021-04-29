@@ -12,6 +12,7 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->longText('text');
             $table->string('status');
+            $table->string('user_email')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

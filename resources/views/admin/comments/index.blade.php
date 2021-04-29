@@ -6,6 +6,10 @@
             <a class="btn btn-success" href="{{ route('admin.comments.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.comment.title_singular') }}
             </a>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
+                {{ trans('global.app_csvImport') }}
+            </button>
+            @include('csvImport.modal', ['model' => 'Comment', 'route' => 'admin.comments.parseCsvImport'])
         </div>
     </div>
 @endcan
@@ -35,6 +39,9 @@
                             {{ trans('cruds.comment.fields.status') }}
                         </th>
                         <th>
+                            {{ trans('cruds.comment.fields.user_email') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -56,6 +63,9 @@
                             </td>
                             <td>
                                 {{ App\Models\Comment::STATUS_SELECT[$comment->status] ?? '' }}
+                            </td>
+                            <td>
+                                {{ $comment->user_email ?? '' }}
                             </td>
                             <td>
                                 @can('comment_show')
